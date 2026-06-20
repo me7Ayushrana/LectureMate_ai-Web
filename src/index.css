@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+
+  --color-bg-base: #FAFBFC;
+  --color-surface: #FFFFFF;
+  --color-text-primary: #1A1A2E;
+  --color-text-secondary: #6B7280;
+  --color-border-base: #E5E7EB;
+  --color-accent-base: #2563EB;
+  --color-accent-hover: #1D4ED8;
+  --color-success-base: #059669;
+  --color-warning-base: #D97706;
+
+  --shadow-subtle: 0px 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0px 4px 12px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(0, 0, 0, 0.08);
+
+  --radius-button: 4px;
+  --radius-card: 8px;
+  --radius-modal: 12px;
+}
+
+/* Base resets & default typography styles */
+@layer base {
+  body {
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
+    line-height: 1.25;
+  }
+}
+
+/* Custom transitions and scroll behaviors */
+html {
+  scroll-behavior: smooth;
+}
+
+/* PDF Print styling */
+@media print {
+  body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-page-break {
+    page-break-after: always;
+  }
+  .print-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    page-break-inside: avoid;
+  }
+}
+
+/* Smooth top-layer animations for dialogs and popovers */
+dialog,
+[popover] {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: 
+    opacity 0.2s ease-out,
+    transform 0.2s ease-out,
+    display 0.2s ease-out allow-discrete,
+    overlay 0.2s ease-out allow-discrete;
+}
+
+dialog[open],
+[popover]:popover-open {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@starting-style {
+  dialog[open],
+  [popover]:popover-open {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+dialog::backdrop {
+  background-color: rgba(26, 26, 46, 0.4);
+  backdrop-filter: none; /* Avoid glassmorphism as requested */
+  opacity: 0;
+  transition: 
+    opacity 0.2s ease-out,
+    display 0.2s ease-out allow-discrete,
+    overlay 0.2s ease-out allow-discrete;
+}
+
+dialog[open]::backdrop {
+  opacity: 1;
+}
+
+@starting-style {
+  dialog[open]::backdrop {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  dialog,
+  [popover] {
+    transform: none !important;
+    transition-duration: 0.05s !important;
+  }
+  @starting-style {
+    dialog[open],
+    [popover]:popover-open {
+      transform: none !important;
+    }
+  }
+}
+
+/* Skeleton loader subtle pulse animation */
+@keyframes pulse-light {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.skeleton-pulse {
+  animation: pulse-light 1.5s ease-in-out infinite;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-base);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
