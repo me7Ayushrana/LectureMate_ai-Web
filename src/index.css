@@ -18,6 +18,7 @@
 
   --shadow-subtle: 0px 1px 3px rgba(0, 0, 0, 0.08);
   --shadow-medium: 0px 4px 12px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0px 8px 24px rgba(0, 0, 0, 0.08), 0px 2px 6px rgba(0, 0, 0, 0.06);
 
   --radius-button: 4px;
   --radius-card: 8px;
@@ -26,30 +27,135 @@
 
 /* Base resets & default typography styles */
 @layer base {
+  html {
+    font-size: 16px; /* Explicit base size */
+  }
+
   body {
     background-color: var(--color-bg-base);
     color: var(--color-text-primary);
     font-family: var(--font-sans);
-    line-height: 1.6;
+    font-size: 1rem;      /* 16px — was system default ~14px */
+    line-height: 1.7;     /* More readable */
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: -0.02em;
     color: var(--color-text-primary);
     line-height: 1.25;
   }
+
+  p {
+    font-size: 0.9375rem; /* 15px for body paragraphs */
+    line-height: 1.75;
+  }
+
+  /* Scale up all Tailwind text-xs to 13px, text-sm to 14.5px */
+  .text-xs  { font-size: 0.8125rem !important; }  /* 13px */
+  .text-sm  { font-size: 0.9375rem !important; }  /* 15px */
+  .text-base { font-size: 1.0625rem !important; }  /* 17px */
+  .text-lg  { font-size: 1.1875rem !important; }  /* 19px */
+  .text-xl  { font-size: 1.3125rem !important; }  /* 21px */
+  .text-2xl { font-size: 1.5625rem !important; }  /* 25px */
+  .text-3xl { font-size: 1.9375rem !important; }  /* 31px */
+  .text-4xl { font-size: 2.3125rem !important; }  /* 37px */
+  .text-5xl { font-size: 3rem !important; }        /* 48px */
+  .text-6xl { font-size: 3.75rem !important; }     /* 60px */
 }
 
-/* Custom transitions and scroll behaviors */
+/* ─── Smooth scroll ────────────────────────── */
 html {
   scroll-behavior: smooth;
 }
 
-/* PDF Print styling */
+/* ─── Hover animation: lift card on hover ────────────────────────── */
+.hover-card {
+  transition:
+    transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.22s ease,
+    border-color 0.18s ease;
+}
+.hover-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: #CBD5E1;
+}
+
+/* ─── Hover: subtle scale on buttons ────────────────────────── */
+.hover-lift {
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+.hover-lift:active {
+  transform: translateY(0px);
+}
+
+/* ─── Hover: accent underline on links ────────────────────────── */
+.hover-link {
+  position: relative;
+  text-decoration: none;
+}
+.hover-link::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--color-accent-base);
+  transition: width 0.22s ease;
+}
+.hover-link:hover::after {
+  width: 100%;
+}
+
+/* ─── Hover: glow ring on icon buttons ────────────────────────── */
+.hover-ring {
+  transition: box-shadow 0.18s ease, background-color 0.18s ease;
+}
+.hover-ring:hover {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* ─── Tab underline slide animation ────────────────────────── */
+.tab-btn {
+  position: relative;
+  transition: color 0.15s ease;
+}
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-accent-base);
+  border-radius: 1px;
+  transition: width 0.22s ease;
+}
+.tab-btn:hover::after {
+  width: 100%;
+}
+.tab-btn.active::after {
+  width: 100%;
+}
+
+/* ─── FAQ details toggle animation ────────────────────────── */
+details summary {
+  transition: color 0.15s ease;
+}
+details:hover summary {
+  color: var(--color-accent-base);
+}
+
+/* ─── PDF Print styling ────────────────────────── */
 @media print {
   body {
     background: white;
@@ -70,40 +176,40 @@ html {
   }
 }
 
-/* Smooth top-layer animations for dialogs and popovers */
+/* ─── Modal open/close animations ────────────────────────── */
 dialog,
 [popover] {
   opacity: 0;
-  transform: scale(0.95);
+  transform: scale(0.95) translateY(8px);
   transition: 
-    opacity 0.2s ease-out,
-    transform 0.2s ease-out,
-    display 0.2s ease-out allow-discrete,
-    overlay 0.2s ease-out allow-discrete;
+    opacity 0.22s ease-out,
+    transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+    display 0.22s ease-out allow-discrete,
+    overlay 0.22s ease-out allow-discrete;
 }
 
 dialog[open],
 [popover]:popover-open {
   opacity: 1;
-  transform: scale(1);
+  transform: scale(1) translateY(0);
 }
 
 @starting-style {
   dialog[open],
   [popover]:popover-open {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.95) translateY(8px);
   }
 }
 
 dialog::backdrop {
   background-color: rgba(26, 26, 46, 0.4);
-  backdrop-filter: none; /* Avoid glassmorphism as requested */
+  backdrop-filter: none;
   opacity: 0;
   transition: 
-    opacity 0.2s ease-out,
-    display 0.2s ease-out allow-discrete,
-    overlay 0.2s ease-out allow-discrete;
+    opacity 0.22s ease-out,
+    display 0.22s ease-out allow-discrete,
+    overlay 0.22s ease-out allow-discrete;
 }
 
 dialog[open]::backdrop {
@@ -122,40 +228,47 @@ dialog[open]::backdrop {
     transform: none !important;
     transition-duration: 0.05s !important;
   }
-  @starting-style {
-    dialog[open],
-    [popover]:popover-open {
-      transform: none !important;
-    }
+  .hover-card,
+  .hover-lift,
+  .hover-ring {
+    transition: none !important;
+    transform: none !important;
   }
 }
 
-/* Skeleton loader subtle pulse animation */
+/* ─── Skeleton loader pulse ────────────────────────── */
 @keyframes pulse-light {
-  0%, 100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
 }
-
 .skeleton-pulse {
   animation: pulse-light 1.5s ease-in-out infinite;
 }
 
-/* Custom Scrollbars */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+/* ─── Shimmer hover on icon squares ────────────────────────── */
+@keyframes shimmer-in {
+  from { opacity: 0; transform: translateX(-100%); }
+  to   { opacity: 0.12; transform: translateX(100%); }
 }
-::-webkit-scrollbar-track {
-  background: transparent;
+.icon-sq {
+  position: relative;
+  overflow: hidden;
 }
-::-webkit-scrollbar-thumb {
-  background: var(--color-border-base);
-  border-radius: 3px;
+.icon-sq::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, white, transparent);
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 0.01s;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #cbd5e1;
+.icon-sq:hover::after {
+  animation: shimmer-in 0.5s ease forwards;
 }
+
+/* ─── Scrollbar ────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-border-base); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #cbd5e1; }

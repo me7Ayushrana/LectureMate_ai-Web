@@ -93,21 +93,21 @@ export const LandingPage: React.FC = () => {
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => handleDemoClick('7UJt_KqYrFY')}
-                className="rounded-button border border-border-base bg-surface hover:border-text-secondary px-3 py-1.5 text-xs font-medium text-text-primary transition-all flex items-center gap-1.5"
+                className="hover-lift rounded-button border border-border-base bg-surface hover:border-accent-base px-3.5 py-2 text-sm font-medium text-text-primary transition-all flex items-center gap-1.5"
               >
                 <Video className="h-3.5 w-3.5 text-blue-500" />
                 MIT Linear Algebra
               </button>
               <button
                 onClick={() => handleDemoClick('jGwO_thI7yI')}
-                className="rounded-button border border-border-base bg-surface hover:border-text-secondary px-3 py-1.5 text-xs font-medium text-text-primary transition-all flex items-center gap-1.5"
+                className="hover-lift rounded-button border border-border-base bg-surface hover:border-accent-base px-3.5 py-2 text-sm font-medium text-text-primary transition-all flex items-center gap-1.5"
               >
                 <Video className="h-3.5 w-3.5 text-green-600" />
                 Stanford ML (Andrew Ng)
               </button>
               <button
                 onClick={() => handleDemoClick('WUvTyaaN2dQ')}
-                className="rounded-button border border-border-base bg-surface hover:border-text-secondary px-3 py-1.5 text-xs font-medium text-text-primary transition-all flex items-center gap-1.5"
+                className="hover-lift rounded-button border border-border-base bg-surface hover:border-accent-base px-3.5 py-2 text-sm font-medium text-text-primary transition-all flex items-center gap-1.5"
               >
                 <Video className="h-3.5 w-3.5 text-red-500" />
                 3Blue1Brown Calculus
@@ -192,39 +192,39 @@ export const LandingPage: React.FC = () => {
       <section className="border-t border-border-base bg-surface py-20">
         <div className="mx-auto max-w-7xl px-6 text-center space-y-12">
           <div className="space-y-4 max-w-2xl mx-auto">
-            <h2 className="text-3xl font-bold tracking-tight text-text-primary m-0">How it works</h2>
-            <p className="text-sm text-text-secondary leading-relaxed">
+            <h2 className="text-4xl font-bold tracking-tight text-text-primary m-0">How it works</h2>
+            <p className="text-base text-text-secondary leading-relaxed">
               Three steps to turn lengthy lectures into structured, retention-ready materials.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 text-left">
-            <div className="rounded-card border border-border-base p-6 space-y-3 bg-bg-base">
-              <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-accent-base text-white">
+            <div className="hover-card rounded-card border border-border-base p-6 space-y-3 bg-bg-base">
+              <div className="flex h-11 w-11 items-center justify-center rounded-sm bg-accent-base text-white">
                 <Video className="h-5 w-5" />
               </div>
-              <h3 className="text-base font-bold text-text-primary m-0">1. Paste Your Video</h3>
-              <p className="text-xs text-text-secondary leading-relaxed">
+              <h3 className="text-lg font-bold text-text-primary m-0">1. Paste Your Video</h3>
+              <p className="text-sm text-text-secondary leading-relaxed">
                 Input any YouTube lecture URL. No signup required. The app instantly connects to public caption resources to index the lecture context.
               </p>
             </div>
 
-            <div className="rounded-card border border-border-base p-6 space-y-3 bg-bg-base">
-              <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-accent-base text-white">
+            <div className="hover-card rounded-card border border-border-base p-6 space-y-3 bg-bg-base">
+              <div className="flex h-11 w-11 items-center justify-center rounded-sm bg-accent-base text-white">
                 <Sparkles className="h-5 w-5" />
               </div>
-              <h3 className="text-base font-bold text-text-primary m-0">2. Pause & Analyze</h3>
-              <p className="text-xs text-text-secondary leading-relaxed">
+              <h3 className="text-lg font-bold text-text-primary m-0">2. Pause & Analyze</h3>
+              <p className="text-sm text-text-secondary leading-relaxed">
                 Stop at any concept. AI reads the transcript and generates a structured study note with topic name, key idea, explanation, example, and difficulty in 3 seconds.
               </p>
             </div>
 
-            <div className="rounded-card border border-border-base p-6 space-y-3 bg-bg-base">
-              <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-accent-base text-white">
+            <div className="hover-card rounded-card border border-border-base p-6 space-y-3 bg-bg-base">
+              <div className="flex h-11 w-11 items-center justify-center rounded-sm bg-accent-base text-white">
                 <Layers className="h-5 w-5" />
               </div>
-              <h3 className="text-base font-bold text-text-primary m-0">3. Review & Retain</h3>
-              <p className="text-xs text-text-secondary leading-relaxed">
+              <h3 className="text-lg font-bold text-text-primary m-0">3. Review & Retain</h3>
+              <p className="text-sm text-text-secondary leading-relaxed">
                 Notes automatically populate flashcards in your notebook. The built-in SM-2 spaced repetition queue schedule reviews so you remember forever.
               </p>
             </div>
@@ -244,44 +244,44 @@ export const LandingPage: React.FC = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
             {/* Feature 1 */}
-            <div className="rounded-card border border-border-base bg-surface p-6 space-y-2">
-              <h4 className="text-sm font-bold text-text-primary m-0">Instant Concept Analysis</h4>
-              <p className="text-xs text-text-secondary leading-relaxed">
+            <div className="hover-card rounded-card border border-border-base bg-surface p-6 space-y-2">
+              <h4 className="text-base font-bold text-text-primary m-0">Instant Concept Analysis</h4>
+              <p className="text-sm text-text-secondary leading-relaxed">
                 Pause the video and generate a structured note detailing the topic, key idea, explanation, and an example.
               </p>
             </div>
             {/* Feature 2 */}
-            <div className="rounded-card border border-border-base bg-surface p-6 space-y-2">
-              <h4 className="text-sm font-bold text-text-primary m-0">AI Chat Follow-up</h4>
-              <p className="text-xs text-text-secondary leading-relaxed">
+            <div className="hover-card rounded-card border border-border-base bg-surface p-6 space-y-2">
+              <h4 className="text-base font-bold text-text-primary m-0">AI Chat Follow-up</h4>
+              <p className="text-sm text-text-secondary leading-relaxed">
                 Ask specific follow-up questions about any generated card. The chatbot maintains context and answers instantly.
               </p>
             </div>
             {/* Feature 3 */}
-            <div className="rounded-card border border-border-base bg-surface p-6 space-y-2">
-              <h4 className="text-sm font-bold text-text-primary m-0">Spaced Repetition (SM-2)</h4>
-              <p className="text-xs text-text-secondary leading-relaxed">
+            <div className="hover-card rounded-card border border-border-base bg-surface p-6 space-y-2">
+              <h4 className="text-base font-bold text-text-primary m-0">Spaced Repetition (SM-2)</h4>
+              <p className="text-sm text-text-secondary leading-relaxed">
                 Scientific review intervals based on the SuperMemo-2 algorithm, maximizing retention while saving study time.
               </p>
             </div>
             {/* Feature 4 */}
-            <div className="rounded-card border border-border-base bg-surface p-6 space-y-2">
-              <h4 className="text-sm font-bold text-text-primary m-0">Flashcard Mode</h4>
-              <p className="text-xs text-text-secondary leading-relaxed">
+            <div className="hover-card rounded-card border border-border-base bg-surface p-6 space-y-2">
+              <h4 className="text-base font-bold text-text-primary m-0">Flashcard Mode</h4>
+              <p className="text-sm text-text-secondary leading-relaxed">
                 Flip cards, evaluate recall quality, and navigate your daily review deck entirely via responsive keyboard shortcuts.
               </p>
             </div>
             {/* Feature 5 */}
-            <div className="rounded-card border border-border-base bg-surface p-6 space-y-2">
-              <h4 className="text-sm font-bold text-text-primary m-0">Quiz Generation</h4>
-              <p className="text-xs text-text-secondary leading-relaxed">
+            <div className="hover-card rounded-card border border-border-base bg-surface p-6 space-y-2">
+              <h4 className="text-base font-bold text-text-primary m-0">Quiz Generation</h4>
+              <p className="text-sm text-text-secondary leading-relaxed">
                 Compile saved lecture notes into interactive 5-question multiple choice quizzes to test active recall before moving on.
               </p>
             </div>
             {/* Feature 6 */}
-            <div className="rounded-card border border-border-base bg-surface p-6 space-y-2">
-              <h4 className="text-sm font-bold text-text-primary m-0">Multi-format Export</h4>
-              <p className="text-xs text-text-secondary leading-relaxed">
+            <div className="hover-card rounded-card border border-border-base bg-surface p-6 space-y-2">
+              <h4 className="text-base font-bold text-text-primary m-0">Multi-format Export</h4>
+              <p className="text-sm text-text-secondary leading-relaxed">
                 Download notes and cards in standard formats: PDF (print layout), Markdown (for Obsidian/Notion), JSON, or Anki-importable CSV.
               </p>
             </div>
@@ -300,26 +300,26 @@ export const LandingPage: React.FC = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 text-left">
-            <div className="rounded-card border border-border-base p-6 space-y-2 bg-surface">
+            <div className="hover-card rounded-card border border-border-base p-6 space-y-2 bg-surface">
               <span className="text-xs font-mono font-semibold text-accent-base tracking-wider uppercase">01 / Academic</span>
               <h3 className="text-base font-bold text-text-primary m-0">For Students</h3>
-              <p className="text-xs text-text-secondary leading-relaxed">
+              <p className="text-sm text-text-secondary leading-relaxed">
                 Accelerate exam preparation, review dense university lecture topics, and generate structured notes directly synced with lecture timestamps.
               </p>
             </div>
 
-            <div className="rounded-card border border-border-base p-6 space-y-2 bg-surface">
+            <div className="hover-card rounded-card border border-border-base p-6 space-y-2 bg-surface">
               <span className="text-xs font-mono font-semibold text-accent-base tracking-wider uppercase">02 / Professional</span>
               <h3 className="text-base font-bold text-text-primary m-0">For Self-Learners</h3>
-              <p className="text-xs text-text-secondary leading-relaxed">
+              <p className="text-sm text-text-secondary leading-relaxed">
                 Structure online coding courses, bootcamps, or technical documentaries. Build a unified personal knowledge base from visual learning channels.
               </p>
             </div>
 
-            <div className="rounded-card border border-border-base p-6 space-y-2 bg-surface">
+            <div className="hover-card rounded-card border border-border-base p-6 space-y-2 bg-surface">
               <span className="text-xs font-mono font-semibold text-accent-base tracking-wider uppercase">03 / Instructional</span>
               <h3 className="text-base font-bold text-text-primary m-0">For Educators</h3>
-              <p className="text-xs text-text-secondary leading-relaxed">
+              <p className="text-sm text-text-secondary leading-relaxed">
                 Produce high-quality summaries, study guides, and flashcard sets for students directly from video resources.
               </p>
             </div>
@@ -341,13 +341,13 @@ export const LandingPage: React.FC = () => {
             {faqItems.map((item, idx) => (
               <details
                 key={idx}
-                className="group rounded-card border border-border-base bg-surface p-4 [&_summary::-webkit-details-marker]:hidden"
+                className="hover-card group rounded-card border border-border-base bg-surface p-5 [&_summary::-webkit-details-marker]:hidden"
               >
-                <summary className="flex cursor-pointer items-center justify-between gap-1.5 text-sm font-semibold text-text-primary">
+                <summary className="flex cursor-pointer items-center justify-between gap-1.5 text-base font-semibold text-text-primary">
                   <span>{item.q}</span>
                   <ChevronDown className="h-4 w-4 shrink-0 transition-transform group-open:-rotate-185 text-text-secondary" />
                 </summary>
-                <p className="mt-3 text-xs text-text-secondary leading-relaxed border-t border-border-base pt-3 m-0">
+                <p className="mt-3 text-sm text-text-secondary leading-relaxed border-t border-border-base pt-3 m-0">
                   {item.a}
                 </p>
               </details>
